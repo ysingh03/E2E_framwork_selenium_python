@@ -26,6 +26,20 @@ class Selected_Item:
         itemcount = len(items)
         return itemcount
 
-    def selected_items_by_loops(self, locator):
-        pass
+    def selected_items_by_loops(self, locator, items):
+        allitems = driver.find_elements(By.XPATH, locatorsReader.readLocator(self.section, locator))
+        to_select_item = ['Item 1', 'Item 3', 'Item 4', 'Item 7']
+        for allitem in allitems:
+            if allitem == to_select_item:
+                pass
+
+    def Add_New_Contract(self, locator):
+        # Menu_Transaction= "//li[@class='nav-item menu-is-opening menu-open']//ul[@class='nav nav-treeview']"
+        AllmenuCSS = "li[class='nav-item'] a"
+        Allitems = driver.find_elements(By.XPATH, locatorsReader.readLocator(self.section, locator))
+        for menu_name in Allitems:
+            if menu_name.text in "BOQ":
+                menu_name.click()
+                break
+
 
